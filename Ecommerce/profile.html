@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil | GiftLab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-effect hidden md:block">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-gradient">GiftLab</a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Bosh Sahifa</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Katalog</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Chegirmalar</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Blog</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-6">
+                    <div class="hidden lg:flex items-center bg-white rounded-full px-4 py-2 border border-gray-200">
+                        <i class="fas fa-search text-gray-400"></i>
+                        <input type="text" 
+                               placeholder="Qidirish..." 
+                               class="bg-transparent ml-2 focus:outline-none w-40 xl:w-60">
+                    </div>
+                    
+                    <button class="relative group">
+                        <i class="fas fa-shopping-cart text-gray-600 text-xl group-hover:text-blue-600 transition-colors"></i>
+                        <span class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center group-hover:bg-blue-700">3</span>
+                    </button>
+                    
+                    <!-- Profile Info -->
+                    <div class="hidden md:flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full overflow-hidden">
+                            <img src="images/avatar1.jpg" alt="Profile" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-800">Palonchayev Pistoncha</h4>
+                            <p class="text-sm text-gray-500">+998 90 123 45 67</p>
+                        </div>
+                    </div>
+                    
+                    <button class="md:hidden text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-[160px] pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Profile Header -->
+            <div class="bg-white rounded-2xl p-8 custom-shadow mb-8">
+                <div class="flex items-center space-x-6">
+                    <div class="w-24 h-24 rounded-full overflow-hidden border-4 border-blue-600">
+                        <img src="images/avatar1.jpg" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Palonchayev Pistoncha</h2>
+                        <p class="text-gray-500">+998 90 123 45 67</p>
+                    </div>
+                    <button class="ml-auto bg-blue-600 text-white px-6 py-2 rounded-xl hover:bg-blue-700 transition-colors">
+                        Profilni tahrirlash
+                    </button>
+                </div>
+            </div>
+
+            <!-- Profile Navigation -->
+            <div class="bg-white rounded-2xl p-4 custom-shadow mb-8">
+                <div class="flex items-center justify-between">
+                    <a href="#orders" class="text-gray-600 hover:text-blue-600 transition-colors">Buyurtmalar</a>
+                    <a href="#favorites" class="text-gray-600 hover:text-blue-600 transition-colors">Sevimlilar</a>
+                    <a href="#settings" class="text-gray-600 hover:text-blue-600 transition-colors">Sozlamalar</a>
+                    <a href="#logout" class="text-red-600 hover:text-red-700 transition-colors">Chiqish</a>
+                </div>
+            </div>
+
+            <!-- Orders Section -->
+            <section id="orders" class="mb-12">
+                <h3 class="text-xl font-bold text-gray-800 mb-6">Buyurtmalar</h3>
+                <div class="bg-white rounded-2xl p-6 custom-shadow">
+                    <p class="text-gray-500">Hozircha buyurtmalar yo'q.</p>
+                </div>
+            </section>
+
+            <!-- Favorites Section -->
+            <section id="favorites" class="mb-12">
+                <h3 class="text-xl font-bold text-gray-800 mb-6">Sevimlilar</h3>
+                <div class="bg-white rounded-2xl p-6 custom-shadow">
+                    <p class="text-gray-500">Hozircha sevimlilar yo'q.</p>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="mb-12">
+                <h3 class="text-xl font-bold text-gray-800 mb-6">Sozlamalar</h3>
+                <div class="bg-white rounded-2xl p-6 custom-shadow">
+                    <p class="text-gray-500">Sozlamalar bo'limi hozircha mavjud emas.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <!-- Company Info -->
+                <div class="space-y-6">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <img src="images/logo-white.svg" alt="GiftLab" class="h-10 w-auto">
+                        <span class="text-2xl font-bold">GiftLab</span>
+                    </a>
+                    <p class="text-gray-400">
+                        Sevgi va e'tibor bilan tayyorlangan sovg'alar
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-800 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Tezkor havolalar</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Biz haqimizda</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Yetkazib berish</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">To'lov usullari</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Chegirmalar</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Kategoriyalar</h3>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Guldastalar</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Sovg'a to'plamlari</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Shirinliklar</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">Aksessuarlar</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Bog'lanish</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <i class="fas fa-map-marker-alt mt-1"></i>
+                            <span class="text-gray-400">Navoiy sh., Navoiy t., Navoiy k.,</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+998901234567" class="text-gray-400 hover:text-white transition-colors">
+                                +998 90 123 45 67
+                            </a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@giftlab.uz" class="text-gray-400 hover:text-white transition-colors">
+                                info@giftlab.uz
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2024 GiftLab. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 

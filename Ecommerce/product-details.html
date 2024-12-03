@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baxtli kunlar | GiftLab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-border {
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(to right, #2563eb, #7c3aed) border-box;
+            border: 2px solid transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-effect hidden md:block">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-gradient">GiftLab</a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Bosh Sahifa</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Katalog</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Chegirmalar</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Blog</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-6">
+                    <div class="hidden lg:flex items-center bg-white rounded-full px-4 py-2 border border-gray-200">
+                        <i class="fas fa-search text-gray-400"></i>
+                        <input type="text" 
+                               placeholder="Qidirish..." 
+                               class="bg-transparent ml-2 focus:outline-none w-40 xl:w-60">
+                    </div>
+                    
+                    <button class="relative group">
+                        <i class="fas fa-shopping-cart text-gray-600 text-xl group-hover:text-blue-600 transition-colors"></i>
+                        <span class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center group-hover:bg-blue-700">3</span>
+                    </button>
+                    
+                    <button class="hidden md:flex items-center space-x-2 gradient-border rounded-full px-4 py-2 hover:scale-105 transition-transform">
+                        <i class="fas fa-user text-gray-600"></i>
+                        <span class="text-gray-600">Kirish</span>
+                    </button>
+                    
+                    <button class="md:hidden text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-[160px] pb-20">
+        <!-- Breadcrumb -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+                <a href="index.html" class="hover:text-blue-600">Bosh sahifa</a>
+                <i class="fas fa-chevron-right text-xs"></i>
+                <a href="#" class="hover:text-blue-600">Guldastalar</a>
+                <i class="fas fa-chevron-right text-xs"></i>
+                <span class="text-gray-800">Baxtli kunlar</span>
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl p-6 md:p-8 mb-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Product Images -->
+                    <div class="space-y-4">
+                        <!-- Main Image -->
+                        <div class="aspect-square rounded-2xl overflow-hidden">
+                            <img src="images/product1.jpg" 
+                                 alt="Baxtli kunlar" 
+                                 class="w-full h-full object-cover" 
+                                 id="mainImage">
+                        </div>
+                        <!-- Thumbnail Images -->
+                        <div class="grid grid-cols-4 gap-4">
+                            <button class="aspect-square rounded-xl overflow-hidden border-2 border-blue-600">
+                                <img src="images/product1.jpg" 
+                                     alt="Thumbnail 1" 
+                                     class="w-full h-full object-cover">
+                            </button>
+                            <button class="aspect-square rounded-xl overflow-hidden border-2 border-transparent hover:border-blue-600">
+                                <img src="images/product1-2.jpg" 
+                                     alt="Thumbnail 2" 
+                                     class="w-full h-full object-cover">
+                            </button>
+                            <button class="aspect-square rounded-xl overflow-hidden border-2 border-transparent hover:border-blue-600">
+                                <img src="images/product1-3.jpg" 
+                                     alt="Thumbnail 3" 
+                                     class="w-full h-full object-cover">
+                            </button>
+                            <button class="aspect-square rounded-xl overflow-hidden border-2 border-transparent hover:border-blue-600">
+                                <img src="images/product1-4.jpg" 
+                                     alt="Thumbnail 4" 
+                                     class="w-full h-full object-cover">
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="space-y-6">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-800 mb-2">Baxtli kunlar</h1>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star text-yellow-400"></i>
+                                    <i class="fas fa-star-half-alt text-yellow-400"></i>
+                                    <span class="ml-2 text-sm text-gray-500">(128 baho)</span>
+                                </div>
+                                <span class="text-sm text-gray-500">1,240 marta sotilgan</span>
+                            </div>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-3xl font-bold text-blue-600">127,500 so'm</span>
+                                <span class="text-lg text-gray-400 line-through">150,000 so'm</span>
+                                <span class="px-2 py-1 rounded-lg bg-red-500 text-white text-sm">-15%</span>
+                            </div>
+                            <p class="text-sm text-gray-500">Narx bir dona uchun ko'rsatilgan</p>
+                        </div>
+
+                        <!-- Variants -->
+                        <div class="space-y-4">
+                            <h3 class="font-medium text-gray-800">O'lchamni tanlang</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <button class="px-4 py-2 rounded-xl border-2 border-transparent hover:border-blue-600 bg-gray-100 text-gray-800">
+                                    Kichik
+                                </button>
+                                <button class="px-4 py-2 rounded-xl border-2 border-blue-600 bg-blue-50 text-blue-600">
+                                    O'rta
+                                </button>
+                                <button class="px-4 py-2 rounded-xl border-2 border-transparent hover:border-blue-600 bg-gray-100 text-gray-800">
+                                    Katta
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="space-y-4">
+                            <h3 class="font-medium text-gray-800">Miqdorni tanlang</h3>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center border-2 border-gray-200 rounded-xl">
+                                    <button class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-blue-600">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="number" 
+                                           value="1" 
+                                           min="1" 
+                                           class="w-16 h-10 text-center border-x-2 border-gray-200">
+                                    <button class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-blue-600">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <span class="text-sm text-gray-500">Omborda: 48 dona</span>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex items-center space-x-4">
+                            <button class="flex-1 bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span>Savatga qo'shish</span>
+                            </button>
+                            <button class="w-12 h-12 flex items-center justify-center rounded-xl border-2 border-gray-200 hover:border-red-500 text-red-500">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <!-- Features -->
+                        <div class="grid grid-cols-2 gap-4 pt-6 border-t border-gray-200">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                    <i class="fas fa-truck text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Bepul yetkazib berish</h4>
+                                    <p class="text-sm text-gray-500">100,000 so'mdan yuqori</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                    <i class="fas fa-shield-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Sifat kafolati</h4>
+                                    <p class="text-sm text-gray-500">100% original</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="bg-white rounded-2xl p-6 md:p-8 mb-8">
+                <h2 class="text-xl font-bold text-gray-800 mb-6">Mahsulot haqida</h2>
+                <div class="prose max-w-none">
+                    <p>
+                        "Baxtli kunlar" guldastasi - har qanday bayram va quvonchli kunlaringizni yanada yorqinroq qilish uchun mukammal tanlov. Bu nafis kompozitsiya eng sara gullardan tuzilgan bo'lib, uzoq vaqt o'z ko'rinishini yo'qotmaydi.
+                    </p>
+                    <h3>Tarkibi:</h3>
+                    <ul>
+                        <li>7 dona qizil atirgul</li>
+                        <li>5 dona oq kalla</li>
+                        <li>3 dona pushti gerbera</li>
+                        <li>Bezak gullar va ko'katlar</li>
+                    </ul>
+                    <h3>O'lchamlari:</h3>
+                    <ul>
+                        <li>Kichik: 30-35 sm</li>
+                        <li>O'rta: 40-45 sm</li>
+                        <li>Katta: 50-55 sm</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Reviews -->
+            <div class="bg-white rounded-2xl p-6 md:p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-xl font-bold text-gray-800">Mijozlar fikrlari</h2>
+                    <button class="text-blue-600 hover:text-blue-700">
+                        Baho berish
+                    </button>
+                </div>
+
+                <!-- Reviews List -->
+                <div class="space-y-6">
+                    <!-- Review Item -->
+                    <div class="border-b border-gray-200 pb-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-10 h-10 rounded-full overflow-hidden">
+                                    <img src="images/avatar1.jpg" 
+                                         alt="User" 
+                                         class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Palonchayev Pistoncha</h4>
+                                    <p class="text-sm text-gray-500">12-mart, 2024</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600">
+                            Juda ajoyib guldasta! Vaqtida yetkazib berishdi va gullar yangi uzilgandek yangi. Rahmat!
+                        </p>
+                    </div>
+
+                    <!-- More reviews... -->
+                </div>
+            </div>
+
+            <!-- Similar Products -->
+            <div class="bg-white rounded-2xl p-6 md:p-8">
+                <h2 class="text-xl font-bold text-gray-800 mb-6">O'xshash mahsulotlar</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Similar product cards... -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer component from index.html -->
+
+    <script>
+        // Image gallery functionality
+        const thumbnails = document.querySelectorAll('.thumbnail');
+        const mainImage = document.getElementById('mainImage');
+
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                // Remove active border from all thumbnails
+                thumbnails.forEach(t => t.classList.remove('border-blue-600'));
+                // Add active border to clicked thumbnail
+                thumb.classList.add('border-blue-600');
+                // Update main image
+                mainImage.src = thumb.querySelector('img').src;
+            });
+        });
+
+        // Quantity input functionality
+        const quantityInput = document.querySelector('input[type="number"]');
+        const minusBtn = quantityInput.previousElementSibling;
+        const plusBtn = quantityInput.nextElementSibling;
+
+        minusBtn.addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        });
+
+        plusBtn.addEventListener('click', () => {
+            const currentValue = parseInt(quantityInput.value);
+            const maxValue = 48; // Get from available stock
+            if (currentValue < maxValue) {
+                quantityInput.value = currentValue + 1;
+            }
+        });
+    </script>
+</body>
+</html> 

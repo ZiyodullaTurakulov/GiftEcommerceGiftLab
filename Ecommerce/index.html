@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiftLab | Premium Sovg'alar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        
+        .custom-shadow {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .gradient-border {
+            border: 2px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(45deg, #3B82F6, #8B5CF6) border-box;
+        }
+
+        .text-gradient {
+            background: linear-gradient(45deg, #3B82F6, #8B5CF6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Desktop Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-effect hidden md:block">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-gradient">GiftLab</a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Bosh Sahifa</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Katalog</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Chegirmalar</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:scale-105">Blog</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center space-x-6">
+                    <div class="hidden lg:flex items-center bg-white rounded-full px-4 py-2 border border-gray-200">
+                        <i class="fas fa-search text-gray-400"></i>
+                        <input type="text" 
+                               placeholder="Qidirish..." 
+                               class="bg-transparent ml-2 focus:outline-none w-40 xl:w-60">
+                    </div>
+                    
+                    <button class="relative group">
+                        <i class="fas fa-shopping-cart text-gray-600 text-xl group-hover:text-blue-600 transition-colors"></i>
+                        <span class="absolute -top-2 -right-2 bg-blue-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center group-hover:bg-blue-700">3</span>
+                    </button>
+                    
+                    <button class="hidden md:flex items-center space-x-2 gradient-border rounded-full px-4 py-2 hover:scale-105 transition-transform">
+                        <i class="fas fa-user text-gray-600"></i>
+                        <span class="text-gray-600">Kirish</span>
+                    </button>
+                    
+                    <button class="md:hidden text-gray-600 hover:text-blue-600">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 block md:hidden">
+        <!-- Background blur effect -->
+        <div class="absolute inset-0 bg-white/80 backdrop-blur-lg"></div>
+        
+        <!-- Navigation items -->
+        <div class="relative grid grid-cols-5 gap-1 px-2 py-3 border-t border-gray-200">
+            <!-- Home -->
+            <a href="#" class="flex flex-col items-center justify-center space-y-1 group">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full group-hover:bg-blue-50 transition-colors">
+                    <i class="fas fa-home text-xl text-gray-600 group-hover:text-blue-600"></i>
+                </div>
+                <span class="text-xs text-gray-600 group-hover:text-blue-600">Bosh sahifa</span>
+            </a>
+
+            <!-- Categories -->
+            <a href="#" class="flex flex-col items-center justify-center space-y-1 group">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full group-hover:bg-blue-50 transition-colors">
+                    <i class="fas fa-th-large text-xl text-gray-600 group-hover:text-blue-600"></i>
+                </div>
+                <span class="text-xs text-gray-600 group-hover:text-blue-600">Katalog</span>
+            </a>
+
+            <!-- Search Button (Center, Larger) -->
+            <button onclick="toggleSearch()" class="relative flex flex-col items-center group">
+                <div class="w-14 h-14 flex items-center justify-center rounded-full bg-blue-600 shadow-lg -mt-5 group-hover:bg-blue-700 transition-colors">
+                    <i class="fas fa-search text-xl text-white"></i>
+                </div>
+                <span class="text-xs text-gray-600 mt-1 group-hover:text-blue-600">Qidiruv</span>
+            </button>
+
+            <!-- Cart -->
+            <a href="#" class="flex flex-col items-center justify-center space-y-1 group">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full group-hover:bg-blue-50 transition-colors relative">
+                    <i class="fas fa-shopping-cart text-xl text-gray-600 group-hover:text-blue-600"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">3</span>
+                </div>
+                <span class="text-xs text-gray-600 group-hover:text-blue-600">Savatcha</span>
+            </a>
+
+            <!-- Profile -->
+            <a href="#" class="flex flex-col items-center justify-center space-y-1 group">
+                <div class="w-10 h-10 flex items-center justify-center rounded-full group-hover:bg-blue-50 transition-colors">
+                    <i class="fas fa-user text-xl text-gray-600 group-hover:text-blue-600"></i>
+                </div>
+                <span class="text-xs text-gray-600 group-hover:text-blue-600">Profil</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+        <div class="absolute inset-x-0 top-0 bg-white p-4">
+            <div class="relative flex items-center">
+                <input type="text" 
+                       placeholder="Mahsulotlarni qidirish..." 
+                       class="w-full pl-10 pr-4 py-3 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600">
+                <i class="fas fa-search absolute left-4 text-gray-400"></i>
+                <button onclick="toggleSearch()" class="ml-4 text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <!-- Search Results -->
+            <div id="searchResults" class="mt-4 hidden">
+                <!-- Results will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="pt-20 pb-12 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                        Mukammal sovg'ani <span class="text-gradient">kashf eting</span>
+                    </h1>
+                    <p class="text-gray-600 text-lg">
+                        Premium sifatli sovg'alar va gullar. Sevimli insoningizga eng yaxshi sovg'ani tanlang.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button class="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-colors">
+                            Xarid qilish
+                        </button>
+                        <button class="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full hover:bg-blue-50 transition-colors">
+                            Katalog
+                        </button>
+                    </div>
+                    <div class="flex items-center space-x-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-truck text-blue-600 text-2xl mr-2"></i>
+                            <span class="text-gray-600">Bepul yetkazib berish</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-blue-600 text-2xl mr-2"></i>
+                            <span class="text-gray-600">100% kafolat</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="images/hero.png" alt="Hero" class="w-full rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span class="text-gray-600">Online: 253 kishi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="bg-gray-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold">Kategoriyalar</h2>
+                <button class="text-blue-600 hover:text-blue-700 flex items-center">
+                    Barchasi <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+            
+            <!-- Categories Slider for Mobile -->
+            <div class="swiper categories-swiper md:hidden">
+                <div class="swiper-wrapper">
+                    <!-- Category Card 1 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl p-6 custom-shadow hover:shadow-xl transition-shadow group cursor-pointer">
+                            <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors">
+                                <i class="fas fa-gift text-blue-600 text-2xl group-hover:text-white transition-colors"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">Sovg'a To'plamlari</h3>
+                            <p class="text-gray-500 text-sm mt-2">100+ mahsulot</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Category Card 2 -->
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl p-6 custom-shadow hover:shadow-xl transition-shadow group cursor-pointer">
+                            <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-600 transition-colors">
+                                <i class="fas fa-flower text-purple-600 text-2xl group-hover:text-white transition-colors"></i>
+                            </div>
+                            <h3 class="font-semibold text-gray-800 group-hover:text-purple-600 transition-colors">Gullar</h3>
+                            <p class="text-gray-500 text-sm mt-2">50+ mahsulot</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Boshqa kategoriyalar... -->
+                </div>
+                <div class="swiper-pagination mt-6"></div>
+            </div>
+            
+            <!-- Categories Grid for Desktop -->
+            <div class="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Category Card 1 -->
+                <div class="bg-white rounded-2xl p-6 custom-shadow hover:shadow-xl transition-all group cursor-pointer">
+                    <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors">
+                        <i class="fas fa-gift text-blue-600 text-2xl group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">Sovg'a To'plamlari</h3>
+                    <p class="text-gray-500 text-sm mt-2">100+ mahsulot</p>
+                </div>
+                
+                <!-- Category Card 2 -->
+                <div class="bg-white rounded-2xl p-6 custom-shadow hover:shadow-xl transition-all group cursor-pointer">
+                    <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-600 transition-colors">
+                        <i class="fas fa-flower text-purple-600 text-2xl group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 group-hover:text-purple-600 transition-colors">Gullar</h3>
+                    <p class="text-gray-500 text-sm mt-2">50+ mahsulot</p>
+                </div>
+                
+                <!-- Boshqa kategoriyalar... -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="bg-gray-100 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold">Mashhur Mahsulotlar</h2>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-400 hover:text-blue-600 transition-colors">
+                        <i class="fas fa-th-large text-xl"></i>
+                    </button>
+                    <button class="text-gray-400 hover:text-blue-600 transition-colors">
+                        <i class="fas fa-list text-xl"></i>
+                    </button>
+                    <select class="bg-gray-100 rounded-lg px-4 py-2 text-gray-600 focus:outline-none">
+                        <option>Mashhurlik bo'yicha</option>
+                        <option>Narx: Arzondan qimmatga</option>
+                        <option>Narx: Qimmatdan arzonga</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Product Card -->
+                <a href="product-details.html" class="block bg-white rounded-2xl p-4 hover:shadow-lg transition-shadow relative group">
+                    <div class="relative">
+                        <img src="images/product1.jpg" 
+                             alt="Product" 
+                             class="w-full aspect-square object-cover rounded-t-2xl">
+                        <div class="absolute top-4 right-4 flex flex-col space-y-2">
+                            <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors">
+                                <i class="far fa-heart text-gray-600"></i>
+                            </button>
+                            <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:bg-gray-100 transition-colors">
+                                <i class="fas fa-share-alt text-gray-600"></i>
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-red-500 text-white text-xs px-3 py-1.5 rounded-full">
+                                -20%
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-sm text-gray-500">Premium</span>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm text-gray-600 ml-1">4.8</span>
+                            </div>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 mb-2 line-clamp-2">
+                            Gul Dasta Premium
+                        </h3>
+                        <div class="flex items-center justify-between">
+                            <div class="space-y-1">
+                                <span class="text-blue-600 font-bold">150,000 so'm</span>
+                                <span class="block text-gray-400 text-sm line-through">180,000 so'm</span>
+                            </div>
+                            <button class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Action Bar -->
+                    <div class="absolute inset-x-0 bottom-0 p-4 bg-white/95 backdrop-blur-lg rounded-b-2xl translate-y-full group-hover:translate-y-0 transition-transform duration-300 flex items-center justify-between sm:hidden">
+                        <button class="text-blue-600 font-medium">
+                            Batafsil
+                        </button>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            Savatchaga
+                        </button>
+                    </div>
+                </a>
+                <!-- Boshqa mahsulotlar -->
+
+                <!-- New Product 1 -->
+                <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-shadow relative group">
+                    <div class="relative mb-3">
+                        <img src="images/product7.jpg" 
+                             alt="Gul dasta" 
+                             class="w-full aspect-square object-cover rounded-xl">
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-50 transition-colors">
+                            <i class="far fa-heart text-red-500"></i>
+                        </button>
+                        <div class="absolute top-2 left-2">
+                            <span class="px-2 py-1 rounded-lg bg-red-500 text-white text-xs">-20%</span>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Baxtli onlar</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-600 font-bold">120,000 so'm</p>
+                            <p class="text-sm text-gray-400 line-through">150,000 so'm</p>
+                        </div>
+                        <button class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- New Product 2 -->
+                <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-shadow relative group">
+                    <div class="relative mb-3">
+                        <img src="images/product8.jpg" 
+                             alt="Sovg'a to'plami" 
+                             class="w-full aspect-square object-cover rounded-xl">
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-50 transition-colors">
+                            <i class="far fa-heart text-red-500"></i>
+                        </button>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Premium to'plam</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-600 font-bold">280,000 so'm</p>
+                        </div>
+                        <button class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- New Product 3 -->
+                <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-shadow relative group">
+                    <div class="relative mb-3">
+                        <img src="images/product9.jpg" 
+                             alt="Shokolad to'plami" 
+                             class="w-full aspect-square object-cover rounded-xl">
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-50 transition-colors">
+                            <i class="far fa-heart text-red-500"></i>
+                        </button>
+                        <div class="absolute top-2 left-2">
+                            <span class="px-2 py-1 rounded-lg bg-green-500 text-white text-xs">Yangi</span>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Shokolad aralashmasi</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-600 font-bold">95,000 so'm</p>
+                        </div>
+                        <button class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- New Product 4 -->
+                <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-shadow relative group">
+                    <div class="relative mb-3">
+                        <img src="images/product10.jpg" 
+                             alt="Tug'ilgan kun to'plami" 
+                             class="w-full aspect-square object-cover rounded-xl">
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-50 transition-colors">
+                            <i class="far fa-heart text-red-500"></i>
+                        </button>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Tug'ilgan kun maxsus</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-600 font-bold">320,000 so'm</p>
+                        </div>
+                        <button class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- New Product 5 -->
+                <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-shadow relative group">
+                    <div class="relative mb-3">
+                        <img src="images/product11.jpg" 
+                             alt="Aralash gullar" 
+                             class="w-full aspect-square object-cover rounded-xl">
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-50 transition-colors">
+                            <i class="far fa-heart text-red-500"></i>
+                        </button>
+                        <div class="absolute top-2 left-2">
+                            <span class="px-2 py-1 rounded-lg bg-red-500 text-white text-xs">-15%</span>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Bahoriy kayfiyat</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-600 font-bold">170,000 so'm</p>
+                            <p class="text-sm text-gray-400 line-through">200,000 so'm</p>
+                        </div>
+                        <button class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- New Product 6 -->
+                <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-shadow relative group">
+                    <div class="relative mb-3">
+                        <img src="images/product12.jpg" 
+                             alt="Romantik kecha" 
+                             class="w-full aspect-square object-cover rounded-xl">
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-50 transition-colors">
+                            <i class="far fa-heart text-red-500"></i>
+                        </button>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Romantik kecha</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-600 font-bold">450,000 so'm</p>
+                        </div>
+                        <button class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- New Product 7 -->
+                <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-shadow relative group">
+                    <div class="relative mb-3">
+                        <img src="images/product13.jpg" 
+                             alt="Qizil atirgullar" 
+                             class="w-full aspect-square object-cover rounded-xl">
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-50 transition-colors">
+                            <i class="far fa-heart text-red-500"></i>
+                        </button>
+                        <div class="absolute top-2 left-2">
+                            <span class="px-2 py-1 rounded-lg bg-green-500 text-white text-xs">Yangi</span>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Qizil atirgullar</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-600 font-bold">220,000 so'm</p>
+                        </div>
+                        <button class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- New Product 8 -->
+                <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-shadow relative group">
+                    <div class="relative mb-3">
+                        <img src="images/product14.jpg" 
+                             alt="Mavsumiy to'plam" 
+                             class="w-full aspect-square object-cover rounded-xl">
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-50 transition-colors">
+                            <i class="far fa-heart text-red-500"></i>
+                        </button>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Mavsumiy to'plam</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-600 font-bold">185,000 so'm</p>
+                        </div>
+                        <button class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- New Product 9 -->
+                <div class="bg-white rounded-2xl p-4 hover:shadow-lg transition-shadow relative group">
+                    <div class="relative mb-3">
+                        <img src="images/product15.jpg" 
+                             alt="Mini gullar" 
+                             class="w-full aspect-square object-cover rounded-xl">
+                        <button class="absolute top-2 right-2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-red-50 transition-colors">
+                            <i class="far fa-heart text-red-500"></i>
+                        </button>
+                        <div class="absolute top-2 left-2">
+                            <span class="px-2 py-1 rounded-lg bg-red-500 text-white text-xs">-25%</span>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-gray-800 mb-2">Mini gullar to'plami</h3>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-blue-600 font-bold">75,000 so'm</p>
+                            <p class="text-sm text-gray-400 line-through">100,000 so'm</p>
+                        </div>
+                        <button class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="bg-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-6 custom-shadow hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-truck text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2">Tezkor Yetkazib Berish</h3>
+                    <p class="text-gray-600 text-sm">Shahar bo'ylab 24 soat ichida bepul yetkazib berish</p>
+                </div>
+                <!-- Boshqa xususiyatlar -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Special Offer Card 1 -->
+                <div class="relative overflow-hidden rounded-3xl group">
+                    <img src="images/offer1.jpg" 
+                         alt="Special Offer" 
+                         class="w-full h-[400px] object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-transparent flex items-center p-8">
+                        <div class="text-white max-w-md">
+                            <span class="text-sm bg-blue-600 px-4 py-1 rounded-full">Yangi</span>
+                            <h3 class="text-3xl font-bold mt-4 mb-4">Bahor Kolleksiyasi</h3>
+                            <p class="mb-6 text-gray-200">Barcha gul to'plamlariga 20% chegirma</p>
+                            <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center group">
+                                Buyurtma berish
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Offer Card 2 -->
+                <div class="relative overflow-hidden rounded-3xl group">
+                    <img src="images/offer2.jpg" 
+                         alt="Special Offer" 
+                         class="w-full h-[400px] object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-transparent flex items-center p-8">
+                        <div class="text-white max-w-md">
+                            <span class="text-sm bg-purple-600 px-4 py-1 rounded-full">Limited</span>
+                            <h3 class="text-3xl font-bold mt-4 mb-4">Premium To'plamlar</h3>
+                            <p class="mb-6 text-gray-200">Premium sovg'alar uchun maxsus narxlar</p>
+                            <button class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors inline-flex items-center group">
+                                Ko'proq ko'rish
+                                <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-3xl font-bold mb-4">Mijozlar Fikrlari</h2>
+                <p class="text-gray-600">Bizning xizmatlardan foydalangan mijozlarning qayta aloqalari</p>
+            </div>
+            
+            <div class="swiper testimonials-swiper">
+                <div class="swiper-wrapper pb-8">
+                    <!-- Testimonial Card -->
+                    <div class="swiper-slide">
+                        <div class="bg-white rounded-2xl p-6 custom-shadow">
+                            <div class="flex items-center mb-6">
+                                <img src="images/user1.jpg" alt="User" class="w-12 h-12 rounded-full object-cover">
+                                <div class="ml-4">
+                                    <h4 class="font-semibold text-gray-800">Palonchayev Pistoncha</h4>
+                                    <div class="flex text-yellow-400 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">"Ajoyib xizmat va sifatli mahsulotlar. Buyurtma berish juda oson va qulay. Albatta yana foydalanaman!"</p>
+                            <span class="text-sm text-gray-500">2 kun oldin</span>
+                        </div>
+                    </div>
+                    <!-- Boshqa testimoniallar -->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="bg-gradient-to-r from-blue-700 to-purple-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 md:p-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="text-white">
+                        <h2 class="text-3xl font-bold mb-4">Yangiliklardan xabardor bo'ling</h2>
+                        <p class="text-gray-100 mb-6">Maxsus takliflar va yangiliklar uchun obuna bo'ling</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <input type="email" 
+                                   placeholder="Email manzilingiz" 
+                                   class="flex-1 px-6 py-3 rounded-full focus:outline-none text-gray-900">
+                            <button class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap">
+                                Obuna bo'lish
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hidden md:block">
+                        <img src="images/newsletter.png" alt="Newsletter" class="w-full max-w-md mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-gradient">GiftLab</h3>
+                    <p class="text-gray-400 mb-6">Premium sifatli sovg'alar va gullar</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-6">Kompaniya</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Biz haqimizda</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Bog'lanish</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Vakansiyalar</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-6">Xizmatlar</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Yetkazib berish</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">To'lov usullari</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Bonus dasturi</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Chegirmalar</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-6">Aloqa</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone mr-2"></i>
+                            +998 90 123 45 67
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i>
+                            info@giftlab.uz
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i>
+                            Navoiy Shahar
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2024 GiftLab. Barcha huquqlar himoyalangan.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Maxfiylik siyosati</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Foydalanish shartlari</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
